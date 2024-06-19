@@ -9,7 +9,6 @@ const UploadImages = ({ id }) => {
   const { uploadProductImages, error, loading, clearErrors } =
     useContext(ProductContext);
 
-  // const [updated, serUpdated] = useState(false);
 
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
