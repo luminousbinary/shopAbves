@@ -2,12 +2,14 @@
 
 import ProductContext from "@/context/ProductContext";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const UploadImages = ({ id }) => {
   const { uploadProductImages, error, loading, clearErrors } =
     useContext(ProductContext);
+
+  // const [updated, serUpdated] = useState(false);
 
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
