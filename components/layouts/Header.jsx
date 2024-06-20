@@ -32,7 +32,7 @@ const Header = () => {
                 src="/images/logo.png"
                 height="40"
                 width="120"
-                alt="BuyItNow"
+                alt="shopabves"
               />
             </a>
           </div>

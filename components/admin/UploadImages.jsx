@@ -6,12 +6,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const UploadImages = ({ id }) => {
+
   const { uploadProductImages, error, loading, clearErrors } =
     useContext(ProductContext);
 
 
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
+
 
   const onChange = (e) => {
     const files = Array.from(e.target.files);
@@ -33,14 +35,17 @@ const UploadImages = ({ id }) => {
     });
   };
 
+
   useEffect(() => {
     if (error) {
       toast.error(error);
       clearErrors();
     }
-  }, [error, updated]);
+  }, [error]);
+
 
   const submitHandler = (e) => {
+
     e.preventDefault();
 
     const formData = new FormData();
@@ -49,7 +54,9 @@ const UploadImages = ({ id }) => {
       formData.append("image", image);
     });
 
+
     uploadProductImages(formData, id);
+
   };
 
   return (

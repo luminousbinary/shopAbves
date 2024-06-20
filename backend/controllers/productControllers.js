@@ -3,14 +3,20 @@ import APIFilters from "../utils/APIFilters";
 import { cloudinary, uploads } from "../utils/cloudinary";
 import fs from "fs";
 import ErrorHandler from "../utils/errorHandler";
+import path from "path";
 
 export const newProduct = async (req, res, next) => {
   req.body.user = req.user._id;
-
+try {
+  
   const product = await Product.create(req.body);
   res.status(201).json({
     product,
   });
+  
+} catch (error) {
+  console.log(error);
+}
 };
 
 export const getProducts = async (req, res, next) => {
@@ -49,13 +55,23 @@ export const getProduct = async (req, res, next) => {
 };
 
 export const uploadProductImages = async (req, res, next) => {
+  try {
+    
+  console.log("okay 1");
   let product = await Product.findById(req.query.id);
 
+  console.log("okay 2");
   if (!product) {
+  console.log("error 1");
+
     return next(new ErrorHandler("Product not found.", 404));
   }
 
-  const uploader = async (path) => await uploads(path, "buyitnow/products");
+  console.log("okay 3");
+
+  const uploader = async (path) => await uploads(path, "shopabves/products");
+
+  console.log("okay 4");
 
   const urls = [];
   const files = req.files;
@@ -73,8 +89,11 @@ export const uploadProductImages = async (req, res, next) => {
 
   res.status(200).json({
     data: urls,
-    product,
+    product, 
   });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const updateProduct = async (req, res, next) => {
