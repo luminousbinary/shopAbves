@@ -69,8 +69,9 @@ export const uploadProductImages = async (req, res, next) => {
 
   console.log("okay 3");
 
-  const uploader = async (path) => await uploads(path, "shopabves/products");
+  async function uploader(path){ return await uploads(path, "shopabves/products")}
 
+  console.log(uploader);
   console.log("okay 4");
 
   const urls = [];
