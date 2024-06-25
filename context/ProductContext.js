@@ -45,14 +45,11 @@ export const ProductProvider = ({ children }) => {
   };
 
   const uploadProductImages = async (formData, id) => {
-  console.log("okay c 1");
 
     try {
-  console.log("okay c 2");
 
       setLoading(true);
 
-  console.log("okay c 3");
 
       const { data } = await axios.post(
         
@@ -64,19 +61,15 @@ export const ProductProvider = ({ children }) => {
           },
         }
       );
-  console.log("okay c 4");
 
 
       if (data?.data) {
-  console.log("okay c 5");
 
         setLoading(false);
         router.replace("/admin/products");
       }
-  console.log("okay c 6");
 
     } catch (error) {
-  console.log("okay error c 1");
 
       setLoading(false)
       setError(error?.response?.data?.message);
