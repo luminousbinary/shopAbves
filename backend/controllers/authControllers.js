@@ -64,7 +64,7 @@ export const updatePassword = async (req, res, next) => {
 };
 
 export const getUsers = async (req, res) => {
-  const resPerPage = 2;
+  const resPerPage = 10;
   const usersCount = await User.countDocuments();
 
   const apiFilters = new APIFilters(User.find(), req.query).pagination(

@@ -5,8 +5,46 @@ import APIFilters from "../utils/APIFilters";
 import ErrorHandler from "../utils/errorHandler";
 const stripe = new Stripe(process.env.STRIPE_PRIVATE_KEY);
 
+// const https = require('https')
+
+// const params = JSON.stringify({
+//   "email": "customer@email.com",
+//   "amount": "20000"
+// })
+
+// const options = {
+//   hostname: 'api.paystack.co',
+//   port: 443,
+//   path: '/transaction/initialize',
+//   method: 'POST',
+//   headers: {
+//     Authorization: `Bearer ${process.env.PAYSTACK_PRIVATE_KEY}`,
+//     'Content-Type': 'application/json'
+//   }
+// }
+
+// const req = https.request(options, res => {
+//   let data = ''
+
+//   res.on('data', (chunk) => {
+//     data += chunk
+//   });
+
+//   res.on('end', () => {
+//     console.log(JSON.parse(data))
+//   })
+// }).on('error', error => {
+//   console.error(error)
+// })
+
+// req.write(params)
+// req.end()
+
+
+
+// //
 export const getOrders = async (req, res) => {
-  const resPerPage = 2;
+  const resPerPage = 10;
   const ordersCount = await Order.countDocuments();
 
   const apiFilters = new APIFilters(Order.find(), req.query).pagination(
@@ -37,7 +75,7 @@ export const getOrder = async (req, res) => {
 };
 
 export const myOrders = async (req, res) => {
-  const resPerPage = 2;
+  const resPerPage = 10;
   const ordersCount = await Order.countDocuments();
 
   const apiFilters = new APIFilters(Order.find(), req.query).pagination(
@@ -209,3 +247,5 @@ export const webhook = async (req, res) => {
     console.log(error);
   }
 };
+
+
