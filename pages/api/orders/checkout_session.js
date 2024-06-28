@@ -10,4 +10,5 @@ dbConnect();
 
 handler.use(isAuthenticatedUser).post(checkoutSession);
 
+
 export default handler;

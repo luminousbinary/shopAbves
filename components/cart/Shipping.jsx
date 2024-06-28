@@ -20,8 +20,12 @@ const Shipping = ({ addresses }) => {
     if (!shippingInfo) {
       return toast.error("Please select your shipping address");
     }
+    console.log(" ok ckout to try");
+
     // move to stripe checkoutpage
     try {
+    console.log(" ok did try");
+
       const { data } = await axios.post(
         `${process.env.API_URL}/api/orders/checkout_session`,
         {
@@ -30,9 +34,16 @@ const Shipping = ({ addresses }) => {
         }
       );
 
+    console.log(" ok ok");
+
+
       window.location.href = data.url;
+    console.log(" ok over");
+
     } catch (error) {
-      console.log(error.response);
+    console.log(" ok ckout jandler");
+
+      console.log("this is ettrror  ", error.response);
     }
   };
 
